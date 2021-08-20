@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MentalWellbeing.Models.Discussion>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p class="text-right">
+    <a class="btn btn-primary" asp-action="Create">Додади дискусија/topic</a>
+</p>
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+    <hr />
+    <div class="row">
+        <div class="col-9">
+            <h2>@item.Name</h2>
+            <div>@item.Content<br /></div>
+            <br /><br />
+            @if (item.Comments != null && item.Comments.Count != 0)
+            {
+                <ul>
+                    @foreach (var comment in item.Comments)
+                    {
+                        <li>
+                            <p>@comment.Coment</p>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p class="alert alert-secondary">No comments yet ...</p>
+            }
+            <br />
+        </div>
+        <div class="col-3">
+           <br /><br />
+           <br /><br />
+           <a class="btn btn-primary" asp-action="AddComment" asp-route-id="@item.Id">Додади коментар</a>
+           <br />
+        </div>
+    </div>
+    }
+</div>

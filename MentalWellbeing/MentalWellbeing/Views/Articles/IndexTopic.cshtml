@@ -1,0 +1,78 @@
+﻿@model IEnumerable<MentalWellbeing.Models.Article>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    #pageloaddiv {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        background: url('//i.stack.imgur.com/FhHRx.gif') no-repeat center center;
+    }
+</style>
+<!--<div id="pageloaddiv"></div>-->
+
+
+<img src="https://cabamentalwellbeing.org.uk/wp-content/uploads/2021/02/CABA_Mind-Matters_HOME.png" style="height: 300px; width:fit-content;" />
+
+<p>
+    @*
+        <a asp-action="Create" class="btn btn-primary">Add New Article</a>
+    *@
+</p>
+<br />
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img class="card-img-top" src="@item.ImageURL" style="height: 200px;width:300px;" alt="Image for article @item.Name!" />
+                </td>
+                <td>
+                    <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
+                    @{
+                        var content = item.Content.Substring(0, 250);
+                    }
+                    @Html.DisplayFor(modelItem => content)
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Прочитај Повеќе</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.8.2.js"></script>
+<script type="text/javascript">
+    /*$(document).ready(function () {
+        $.ajax({
+            url: '/Home/LoadingIcon_GetCurrentTime',
+            success: function (msg) {
+                if (msg.flag == 1) {
+                    $('#pageloaddiv').hide();
+                    alert("load successfully")
+                }
+                else {
+                    $('#pageloaddiv').show();
+                    alert("load faild")
+                }
+            }
+        })
+    })*/
+</script>

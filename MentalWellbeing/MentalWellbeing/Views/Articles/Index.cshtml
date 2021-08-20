@@ -1,0 +1,56 @@
+﻿@model MentalWellbeing.Models.ArticlesFilteredByTopicDto
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<img src="https://cabamentalwellbeing.org.uk/wp-content/uploads/2021/02/CABA_Mind-Matters_HOME.png" style="height: 300px; width:fit-content;" />
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Article</a>
+</p>
+
+<div class="row">
+    <div class="col">
+        <h3>Filter Articles by Topic:</h3>
+        <form asp-action="Index" method="post">
+            @Html.HiddenFor(model => model.Articles)
+            <select asp-for="Topic" asp-items="Html.GetEnumSelectList<MentalHealthTopic>()">
+                <option value="">Choose a topic</option>
+            </select>
+            <input type="submit" value="Filter by Topic" class="btn btn-primary" />
+        </form>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Articles)
+        {
+            <tr>
+                <td>
+                    <img class="card-img-top" src="@item.ImageURL" style="height: 200px;width:300px;" alt="Image for article @item.Name!" />
+                </td>
+                <td>
+                    <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
+                    @{ 
+                        var content = item.Content.Substring(0, 250);
+                    }
+                    @Html.DisplayFor(modelItem => content)
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Прочитај Повеќе</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

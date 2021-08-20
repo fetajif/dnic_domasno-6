@@ -1,0 +1,62 @@
+﻿@model MentalWellbeing.Models.Expert
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-3">
+
+                <div class="card" style="width: 18rem; height: 35rem;">
+                    <img class="card-img-top" src="@Model.ImageURL" style="height: 40%" alt="Image of expert!" />
+                    <div class="card-body">
+                        <h3 class="card-title">@Model.Name @Model.Surname</h3>
+                        <p class="card-text">
+                            @Model.Biography
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-1">
+                <div style="visibility:hidden;">
+                    ....
+                </div>
+            </div>
+            <div class="col-8">
+
+                <div class="container">
+                    <br /><br /><br />
+                    <hr />
+                    <br />
+                    <div class="row">
+                        <div class="col text-left">
+                            <span class="alert alert-secondary">Здраво! Како можам да ви помогнам?</span>
+                        </div>
+                    </div>
+                    <br /><br /><br /><br />
+                    <div class="row">
+                        <div class="col-10">
+                            <input class="form-control" type="text" placeholder="Type your message..." />
+                        </div>
+                        <div class="col-2">
+                            <a href="#">
+                                <img style="height:35px;width:40px;" src="https://icon-library.com/images/send-icon/send-icon-18.jpg" />
+                            </a>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+<br /><br />
+    <div>
+        <a class="btn btn-primary" asp-action="Index">Назад</a>
+    </div>
+

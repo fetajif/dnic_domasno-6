@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MentalWellbeing.Models.Expert>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    @*
+        <a asp-action="Create">Create New</a>
+    *@
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img class="card-img-top" src="@item.ImageURL" style="height: 200px;width:300px;" alt="Image for article @item.Name!" />
+                </td>
+                <td>
+                    @{
+                        var name = item.Name + " " + item.Surname;
+                    }
+                    <h2>@Html.DisplayFor(modelItem => name)</h2>
+                    @Html.DisplayFor(modelItem => item.Biography)
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Contact" asp-route-id="@item.Id">Контактирај</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

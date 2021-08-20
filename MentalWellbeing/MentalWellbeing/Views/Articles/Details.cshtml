@@ -1,0 +1,22 @@
+﻿@model MentalWellbeing.Models.Article
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-center">@Model.Name</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <img src="@Model.ImageURL" style="height:500px;width:350px;"/>
+        </div>
+        <div class="col-8">
+            @Model.Content
+        </div>
+    </div>
+</div>
+<br /><br />
+<div>
+    <a class="btn btn-primary" asp-action="IndexTopic" asp-route-topic=@Model.Topic>Назад</a>
+</div>
